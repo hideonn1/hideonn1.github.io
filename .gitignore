@@ -8,3 +8,5 @@ vendor/
 .DS_Store
 *.gem
 *.egg
+.terraform/
+.env
