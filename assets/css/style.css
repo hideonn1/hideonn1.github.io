@@ -1,6 +1,6 @@
-@import "{{ site.theme }}";
+---
+---
 
-/* Estilos personalizados para un look oscuro pro */
 body {
     background-color: #0d1117;
     color: #c9d1d9;
