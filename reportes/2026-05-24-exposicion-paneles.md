@@ -3,8 +3,9 @@ layout: default
 title: Exposición de Paneles de Gestión/Administración
 ---
 
-> **Estado:** Activo / Documentado
-> **Nivel de Severidad:** Media
+<div class="meta-data">
+SEVERIDAD: MEDIA | ESTADO: ANONIMIZADO | TIPO: OSINT
+</div>
 
 # Reporte Técnico: Exposición de Paneles de Gestión de Infraestructura Web
 
