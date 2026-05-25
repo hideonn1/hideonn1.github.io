@@ -1,6 +1,9 @@
-# hideonn1.github.io
+---
+layout: default
+title: Exposición de Paneles de Gestión/Administración
+---
 
-# Reporte Técnico: Exposición de Paneles de Gestión de Infraestructura
+# Reporte Técnico: Exposición de Paneles de Gestión de Infraestructura Web
 
 **Fecha:** 24 de Mayo de 2026
 **Clasificación:** Informativo / Hallazgo de Seguridad

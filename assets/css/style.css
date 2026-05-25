@@ -1,0 +1,19 @@
+/* ESTILO CSS */
+@import "{{ site.theme }}";
+
+/* Estilos personalizados para un look oscuro pro */
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { color: #58a6ff; } 
+
+a { color: #f85149; } 
+
+code {
+    background-color: #161b22;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
