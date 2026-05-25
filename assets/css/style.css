@@ -1,18 +1,35 @@
 ---
 ---
 
-body {
-    background-color: #0d1117;
-    color: #c9d1d9;
-    line-height: 1.6;
-}
+/*
+ * style.css — hideonn1.github.io
+ * Estilos complementarios a Tailwind CDN
+ * (Rouge syntax highlighting overrides)
+ */
 
-h1, h2, h3 { color: #58a6ff; } 
+/* ── ROUGE SYNTAX HIGHLIGHTING ── */
+.highlight { background: #0d1117; border-radius: 8px; overflow-x: auto; }
+.highlight .c  { color: #8b949e; font-style: italic }   /* Comment */
+.highlight .k  { color: #ff7b72 }                        /* Keyword */
+.highlight .n  { color: #c9d1d9 }                        /* Name */
+.highlight .o  { color: #ff7b72 }                        /* Operator */
+.highlight .s  { color: #a5d6ff }                        /* String */
+.highlight .s1 { color: #a5d6ff }
+.highlight .s2 { color: #a5d6ff }
+.highlight .mi { color: #79c0ff }                        /* Number */
+.highlight .na { color: #7ee787 }                        /* Name.Attribute */
+.highlight .nb { color: #79c0ff }                        /* Name.Builtin */
+.highlight .nc { color: #f0883e }                        /* Name.Class */
+.highlight .nf { color: #d2a8ff }                        /* Name.Function */
+.highlight .nt { color: #7ee787 }                        /* Name.Tag */
+.highlight .nv { color: #ffa657 }                        /* Name.Variable */
+.highlight .p  { color: #8b949e }                        /* Punctuation */
+.highlight .err { color: #f85149; background: none }
 
-a { color: #f85149; } 
-
-code {
-    background-color: #161b22;
-    padding: 2px 4px;
-    border-radius: 4px;
+/* ── PRINT STYLES ── */
+@media print {
+    body { background: white !important; color: black !important; }
+    .fixed, nav, footer { display: none !important; }
+    article { border: 1px solid #ccc !important; box-shadow: none !important; }
+    a { color: #1d4ed8 !important; }
 }

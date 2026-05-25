@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% include head.html %}
+</head>
+
+<body>
+
+    <!-- Top accent line -->
+    <div class="fixed top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent z-50"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        {% include header.html %}
+
+        <!-- ── METADATA PANEL ── -->
+        {% if page.severidad %}
+        {% assign sev_lower = page.severidad | downcase %}
+        <div class="mb-6">
+            <div class="flex items-center gap-2 mb-2">
+                <svg class="w-3.5 h-3.5 text-blue-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <span class="font-mono text-xs text-slate-600 uppercase tracking-widest">Metadata del reporte</span>
+            </div>
+
+            <div class="meta-grid text-xs font-mono">
+                <div class="meta-cell">
+                    <div class="text-slate-600 uppercase tracking-wider text-[0.65rem] mb-1">Severidad</div>
+                    <span class="badge badge-{{ sev_lower }}">{{ page.severidad }}</span>
+                </div>
+                <div class="meta-cell">
+                    <div class="text-slate-600 uppercase tracking-wider text-[0.65rem] mb-1">Estado</div>
+                    <span class="text-emerald-400 font-semibold">{{ page.estado }}</span>
+                </div>
+                <div class="meta-cell">
+                    <div class="text-slate-600 uppercase tracking-wider text-[0.65rem] mb-1">Tipo</div>
+                    <span class="text-blue-400 font-semibold">{{ page.tipo }}</span>
+                </div>
+                {% if page.date %}
+                <div class="meta-cell">
+                    <div class="text-slate-600 uppercase tracking-wider text-[0.65rem] mb-1">Fecha</div>
+                    <span class="text-slate-400">{{ page.date | date: "%d %b %Y" }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- ── REPORT ARTICLE ── -->
+        <article class="relative bg-dark-600/80 rounded-xl border border-slate-800 shadow-glow-blue overflow-hidden">
+            <!-- Top gradient accent -->
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/25 to-transparent"></div>
+
+            <!-- Terminal-style title bar -->
+            <div class="flex items-center gap-3 px-6 py-3 border-b border-slate-800/80 bg-slate-900/40">
+                <div class="flex gap-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/60"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-amber-500/60"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/60"></div>
+                </div>
+                <span class="font-mono text-xs text-slate-600 truncate">{{ page.title | truncate: 60 }}</span>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 md:p-10">
+                <div class="prose prose-cyber max-w-none">
+                    {{ content }}
+                </div>
+            </div>
+        </article>
+
+        <!-- ── BACK LINK ── -->
+        <div class="mt-10 pt-6 border-t border-slate-800/50">
+            <a href="{{ '/' | relative_url }}"
+               class="inline-flex items-center gap-2 text-slate-500 hover:text-blue-400 transition-colors duration-200 font-mono text-sm group">
+                <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                <span>cd ..</span>
+                <span class="text-slate-700 text-xs">/ volver al índice</span>
+            </a>
+        </div>
+
+        {% include footer.html %}
+
+    </div>
+
+</body>
+</html>

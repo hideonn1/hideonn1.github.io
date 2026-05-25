@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'jekyll', '~> 4.3'
+gem 'jekyll-feed', '~> 0.17'
+gem 'jekyll-seo-tag', '~> 2.8'
+gem 'kramdown', '~> 2.4'
+gem 'kramdown-parser-gfm', '~> 1.1'
+gem 'webrick'
+gem 'csv'
+gem 'bigdecimal'
+gem 'rexml'
+gem 'json'

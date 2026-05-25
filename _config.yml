@@ -1,2 +1,20 @@
 title: "hideonn1 | Inteligencia de Amenazas"
 description: "Reportes técnicos de ciberseguridad y OSINT."
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+
+# Excluir archivos innecesarios del build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

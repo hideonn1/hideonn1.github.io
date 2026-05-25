@@ -1,0 +1,10 @@
+# Jekyll standard ignores
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+.DS_Store
+*.gem
+*.egg

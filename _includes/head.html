@@ -1,0 +1,211 @@
+<!-- ============================================================
+     _includes/head.html
+     Fuente única de verdad: config de Tailwind + estilos globales
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta name="robots" content="index, follow">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Rouge syntax highlighting + print styles -->
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<!-- Tailwind Play CDN (soporta @apply y tailwind.config inline) -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                /* ── FUENTES ── */
+                fontFamily: {
+                    sans: ['Inter', 'system-ui', 'sans-serif'],
+                    mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                },
+
+                /* ── PALETA DEL SISTEMA ── */
+                colors: {
+                    dark: {
+                        950: '#04060a',
+                        900: '#080c12',
+                        800: '#0d1117',
+                        700: '#111827',
+                        600: '#161b22',
+                        500: '#1c2333',
+                    },
+                    accent: {
+                        DEFAULT: '#3b82f6',
+                        dim:     '#1d4ed8',
+                        glow:    '#60a5fa',
+                    },
+                },
+
+                /* ── SOMBRAS ── */
+                boxShadow: {
+                    'glow-blue': '0 0 24px rgba(59,130,246,0.12), 0 0 64px rgba(59,130,246,0.04)',
+                    'glow-sm':   '0 0 12px rgba(59,130,246,0.08)',
+                },
+
+                /* ── TIPOGRAFÍA PROSE ── */
+                /* Configurada aquí para que los tokens vengan del sistema  */
+                typography: ({ theme }) => ({
+                    cyber: {
+                        css: {
+                            /* Colores base del prose — referencia al theme, no hardcoded */
+                            '--tw-prose-body':          theme('colors.slate.400'),
+                            '--tw-prose-headings':      theme('colors.slate.100'),
+                            '--tw-prose-lead':          theme('colors.slate.400'),
+                            '--tw-prose-links':         theme('colors.blue.400'),
+                            '--tw-prose-bold':          theme('colors.slate.200'),
+                            '--tw-prose-counters':      theme('colors.slate.500'),
+                            '--tw-prose-bullets':       theme('colors.blue.500'),
+                            '--tw-prose-hr':            theme('colors.slate.800'),
+                            '--tw-prose-quotes':        theme('colors.slate.400'),
+                            '--tw-prose-quote-borders': theme('colors.blue.500'),
+                            '--tw-prose-captions':      theme('colors.slate.500'),
+                            '--tw-prose-code':          theme('colors.sky.300'),
+                            '--tw-prose-pre-code':      theme('colors.slate.400'),
+                            '--tw-prose-pre-bg':        theme('colors.dark.800'),
+                            '--tw-prose-th-borders':    theme('colors.slate.700'),
+                            '--tw-prose-td-borders':    theme('colors.slate.800'),
+                        },
+                    },
+                }),
+            },
+        },
+    }
+</script>
+
+<!--
+    type="text/tailwindcss" → habilita @apply en el Play CDN.
+    Solo contiene lo que Tailwind NO puede expresar como utility:
+      · body background (gradiente complejo + SVG data URL)
+      · scrollbar (pseudo-elementos no estándar)
+      · ::selection
+      · @keyframes
+      · pseudo-elementos con content ('//') en prose
+      · ::marker (Tailwind no puede targetear ese pseudo-elemento)
+      · font-family inline en prose (no hay utility que funcione dentro de @apply para esto)
+-->
+<style type="text/tailwindcss">
+    /* ── GLOBALS ── */
+    html { scroll-behavior: smooth; }
+
+    ::selection { @apply bg-blue-500/30 text-white; }
+
+    body {
+        @apply bg-dark-900 min-h-screen font-sans text-slate-300 antialiased;
+        background-image:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.08) 0%, transparent 60%),
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.013'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar       { width: 5px; }
+    ::-webkit-scrollbar-track { @apply bg-dark-900; }
+    ::-webkit-scrollbar-thumb { @apply bg-dark-500 rounded-sm; }
+    ::-webkit-scrollbar-thumb:hover { @apply bg-accent; }
+
+    /* ── BADGE COMPONENTS ── */
+    /* Base: estructura + tipografía */
+    .badge {
+        @apply inline-block px-2 py-0.5 rounded border font-bold uppercase text-xs font-mono tracking-wider;
+    }
+    /* Variantes de severidad — una sola fuente de verdad */
+    .badge-media   { @apply text-amber-400  border-amber-400/30  bg-amber-400/10; }
+    .badge-alta    { @apply text-red-400    border-red-400/30    bg-red-400/10; }
+    .badge-critica { @apply text-red-500    border-red-500/40    bg-red-500/10; }
+    .badge-baja    { @apply text-emerald-400 border-emerald-400/30 bg-emerald-400/10; }
+    .badge-info    { @apply text-cyan-400   border-cyan-400/30   bg-cyan-400/10; }
+
+    /* ── META-GRID (tabla de metadatos del reporte) ── */
+    .meta-grid {
+        @apply grid border border-slate-800 rounded-lg overflow-hidden;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1px;
+        background-color: theme('colors.slate.800');
+    }
+    .meta-cell {
+        @apply bg-dark-800 px-4 py-3 transition-colors duration-150 hover:bg-dark-700;
+    }
+
+    /* ──────────────────────────────────────────────────
+       PROSE CYBER — solo lo que @apply no alcanza solo:
+       · pseudo-elementos (content, ::marker)
+       · font-family (necesario override fuera del sistema)
+       · border-bottom con transición (la utility no lo soporta dentro de @apply para a:hover)
+       El RESTO de colores viene del tailwind.config typography
+    ────────────────────────────────────────────────── */
+
+    /* h1: tracking, peso — colores vienen del config */
+    .prose-cyber h1 {
+        @apply text-2xl font-extrabold tracking-tight;
+    }
+
+    /* h2: barra inferior, tipografía monospace, uppercase con prefijo '//' */
+    .prose-cyber h2 {
+        @apply flex items-center gap-1.5 text-[0.8rem] font-bold uppercase tracking-widest
+               text-blue-400 border-b border-slate-800 pb-2.5 mt-9 font-mono;
+    }
+    /* Pseudo-elemento: @apply no puede definir content, solo raw CSS */
+    .prose-cyber h2::before {
+        content: '//';
+        @apply text-blue-500/40 mr-0.5;
+    }
+
+    .prose-cyber h3 { @apply font-semibold text-slate-300; }
+
+    /* Links: border-bottom con transición — rgba() porque theme() no soporta
+       la sintaxis CSS4 'color / opacity' en el Play CDN                        */
+    .prose-cyber a {
+        @apply text-blue-400 no-underline transition-colors duration-200;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.25); /* blue-400/25 */
+    }
+    .prose-cyber a:hover {
+        @apply text-blue-300;
+        border-bottom-color: rgba(147, 197, 253, 0.50); /* blue-300/50 */
+    }
+
+    /* Code inline: font-family literal porque theme('fontFamily.mono') devuelve
+       un array JS que el Play CDN no serializa igual que una utility @apply      */
+    .prose-cyber code {
+        @apply bg-dark-800/90 border border-slate-800 rounded text-sky-300 not-italic;
+        padding: 1px 6px;
+        font-size: 0.8em;
+        font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    /* Pre: forzar bg oscuro */
+    .prose-cyber pre {
+        @apply bg-dark-800 border border-slate-800 rounded-lg overflow-x-auto;
+    }
+    .prose-cyber pre code {
+        @apply bg-transparent border-none text-slate-400;
+        padding: 0;
+        font-size: inherit;
+    }
+
+    /* Blockquote: no-italic + borde izquierdo coloreado */
+    .prose-cyber blockquote {
+        @apply border-l-2 border-blue-500 bg-blue-500/5 rounded-r-md not-italic
+               text-slate-400 py-3 px-5;
+    }
+
+    /* Markers: Tailwind no puede targetear ::marker directamente con utilities.
+       theme() sí funciona aquí para colores (valor escalar, no array).           */
+    .prose-cyber ul li::marker { color: theme('colors.blue.500'); }
+    .prose-cyber ol li::marker {
+        color: theme('colors.slate.500');
+        font-size: 0.85em;
+        font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    .prose-cyber hr     { @apply border-slate-800 my-8; }
+    .prose-cyber strong { @apply text-slate-200 font-semibold; }
+    .prose-cyber em     { @apply text-slate-500 italic; }
+</style>
