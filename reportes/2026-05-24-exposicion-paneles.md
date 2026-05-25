@@ -3,6 +3,9 @@ layout: default
 title: Exposición de Paneles de Gestión/Administración
 ---
 
+> **Estado:** Activo / Documentado
+> **Nivel de Severidad:** Media
+
 # Reporte Técnico: Exposición de Paneles de Gestión de Infraestructura Web
 
 **Fecha:** 24 de Mayo de 2026
