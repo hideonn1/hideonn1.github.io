@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -20,19 +19,41 @@
         }
     </script>
 </head>
-<body class="bg-darkBg text-gray-300 font-sans leading-relaxed">
+<body class="bg-darkBg text-gray-300 font-sans leading-relaxed selection:bg-accent/30">
     <main class="max-w-3xl mx-auto p-6 md:p-10">
-        {{ content }}
+        
+        {% include header.html %}
 
-        <div class="mt-12 pt-8 border-t border-gray-700">
+        {% if page.severidad %}
+        <div class="flex flex-wrap gap-3 font-mono text-xs mb-6 bg-slate-900/60 p-3 rounded-lg border border-gray-800 tracking-wide">
+            <span class="text-gray-400">SEVERIDAD: <strong class="text-amber-500 font-bold">{{ page.severidad }}</strong></span>
+            <span class="text-gray-700">|</span>
+            <span class="text-gray-400">ESTADO: <strong class="text-emerald-500 font-bold">{{ page.estado }}</strong></span>
+            <span class="text-gray-700">|</span>
+            <span class="text-gray-400">TIPO: <strong class="text-accent font-bold">{{ page.tipo }}</strong></span>
+        </div>
+        {% endif %}
+
+        <article class="bg-darkCard p-6 md:p-10 rounded-2xl border border-gray-800 shadow-2xl">
+            <div class="prose prose-invert max-w-none prose-headings:text-white prose-headings:font-bold prose-h1:text-3xl prose-h2:text-xl prose-h2:border-b prose-h2:border-gray-800 prose-h2:pb-2 prose-a:text-accent prose-p:text-gray-400">
+                {{ content }}
+            </div>
+        </article>
+
+        {% if page.url != "/" %}
+        <div class="mt-12 pt-8 border-t border-gray-800">
             <a href="{{ '/' | relative_url }}"
-               class="inline-flex items-center text-accent hover:text-white transition-colors duration-300 font-medium">
-               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               class="inline-flex items-center text-accent hover:text-white transition-colors duration-300 font-medium font-mono text-sm">
+               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>     
                </svg>
-               Volver a la biblioteca
+               cd ..
             </a>
         </div>
+        {% endif %}
+
+        {% include footer.html %}
+
     </main>
 </body>
 </html>

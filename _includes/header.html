@@ -1,1 +1,16 @@
 <!-- PLANTILLA HEADER -->
+ <header class="border-b border-gray-800 pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+        <h1 class="text-2xl font-black tracking-tight text-white hover:text-accent transition-colors duration-300">
+            <a href="{{ '/' | relative_url }}">
+                root@hideonn1:~# <span class="font-sans font-bold text-gray-200">{{ site.title }}</span>
+            </a>
+        </h1>
+        <p class="text-sm text-gray-500 mt-1 font-mono">// {{ site.description }}</p>
+    </div>
+    <nav class="flex gap-4 font-mono text-xs">
+        <a href="{{ '/' | relative_url }}" class="px-3 py-1.5 rounded-md bg-slate-950 border border-gray-800 text-gray-400 hover:text-accent hover:border-accent transition-all duration-300">
+            [ /inicio ]
+        </a>
+    </nav>
+</header>
