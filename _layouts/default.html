@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ page.title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        header { border-bottom: 1px solid #30363d; padding-bottom: 20px; }
+        h1, h2, h3 { color: #58a6ff; }
+        a { color: #f85149; }
+        footer { margin-top: 50px; font-size: 0.8em; border-top: 1px solid #30363d; padding-top: 20px; }
+    </style>
 </head>
 <body>
     <header>
-        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+        <h1><a href="{{ '/' | relative_url }}" style="color: #58a6ff; text-decoration: none;">{{ site.title }}</a></h1>
         <p>{{ site.description }}</p>
     </header>
     
@@ -16,7 +22,7 @@
     </main>
 
     <footer>
-        <p>Preparado por hideonn1 | <a href="https://github.com/hideonn1">GitHub</a></p>
+        <p>Preparado por hideonn1 | <a href="https://github.com/hideonn1" style="color: #f85149;">GitHub</a></p>
     </footer>
 </body>
 </html>
