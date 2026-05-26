@@ -21,6 +21,19 @@ El despliegue y la gestión de este sitio se fundamentan en las siguientes tecno
 * `reportes/`: Documentación técnica de hallazgos.
 * `.github/workflows/`: Automatización de procesos de integración y despliegue (CI/CD).
 
+## Estructura de Archivos
+.
+├── .github/workflows/    # CI/CD (GitHub Actions)
+├── _includes/            # Componentes reutilizables (header, footer, head)
+├── _layouts/             # Estructuras de página (default, report)
+├── assets/
+│   ├── css/              # Hojas de estilo
+│   └── images/           # Recursos gráficos (reporte-1, reporte-2.....reporte-n)
+├── reportes/             # Archivos de reportes (Markdown)
+├── .config.yml           # Configuración del sitio
+├── Gemfile / Gemfile.lock# Gestión de dependencias
+└── index.html            # Página de inicio
+
 ## 🚀 Despliegue Local
 Para fines de auditoría y revisión, el sitio puede ser compilado localmente siguiendo estos pasos:
 
