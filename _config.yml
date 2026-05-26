@@ -1,6 +1,7 @@
 title: "hideonn1 | Inteligencia de Amenazas"
 description: "Reportes técnicos de ciberseguridad y OSINT."
 baseurl: ""
+theme: ""
 
 markdown: kramdown
 kramdown:
