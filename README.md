@@ -27,15 +27,15 @@ Para fines de auditoría y revisión, el sitio puede ser compilado localmente si
 1. **Clonar el repositorio:**
    ```bash
      git clone https://github.com/hideonn1/hideonn1.github.io.git
-     cd hideonn1.github.io```
+     cd hideonn1.github.io
 
 2. **Instalar dependencias:**
    ```bash
-      bundle install```
+      bundle install
 
 4. **Ejecutar servidor de desarrollo:**
    ```bash
-      bundle exec jekyll serve```
+      bundle exec jekyll serve
 
 ## ⚖️ Declaración de Ética y Responsabilidad
 Toda la información contenida en este repositorio es estrictamente para fines educativos y profesionales. El autor ha realizado estas auditorías respetando los marcos de legalidad y ética profesional. Se prohíbe el uso de esta información para fines malintencionados o no autorizados. El autor declina toda responsabilidad sobre el uso indebido de los datos aquí expuestos.
