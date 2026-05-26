@@ -35,6 +35,7 @@ El despliegue y la gestión de este sitio se fundamentan en las siguientes tecno
 ├── _config.yml           # Configuración del sitio
 ├── Gemfile               # Gestión de dependencias
 └── index.html            # Página de inicio
+```
 
 ## 🚀 Despliegue Local
 Para fines de auditoría y revisión, el sitio puede ser compilado localmente siguiendo estos pasos:
