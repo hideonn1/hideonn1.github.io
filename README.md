@@ -21,17 +21,19 @@ El despliegue y la gestión de este sitio se fundamentan en las siguientes tecno
 * `reportes/`: Documentación técnica de hallazgos.
 * `.github/workflows/`: Automatización de procesos de integración y despliegue (CI/CD).
 
-## Estructura de Archivos
+## 🌳 Estructura de Archivos
+
+```text
 .
 ├── .github/workflows/    # CI/CD (GitHub Actions)
-├── _includes/            # Componentes reutilizables (header, footer, head)
-├── _layouts/             # Estructuras de página (default, report)
+├── _includes/            # Componentes reutilizables
+├── _layouts/             # Estructuras de página
 ├── assets/
 │   ├── css/              # Hojas de estilo
-│   └── images/           # Recursos gráficos (reporte-1, reporte-2.....reporte-n)
+│   └── images/           # Recursos gráficos
 ├── reportes/             # Archivos de reportes (Markdown)
-├── .config.yml           # Configuración del sitio
-├── Gemfile / Gemfile.lock# Gestión de dependencias
+├── _config.yml           # Configuración del sitio
+├── Gemfile               # Gestión de dependencias
 └── index.html            # Página de inicio
 
 ## 🚀 Despliegue Local
